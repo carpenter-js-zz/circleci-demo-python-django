@@ -22,14 +22,14 @@ jobs:
             sudo pip install pipenv
             pipenv install
       - save_cache:
-        key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-        paths:
-          - ".venv"
-          - "/usr/local/bin"
-          - "/usr/local/lib/python3.6/site-packages"
+          key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
+          paths:
+            - ".venv"
+            - "/usr/local/bin"
+            - "/usr/local/lib/python3.6/site-packages"
       - run:
-        command: |
-          pipenv run python manage.py test
+          command: |
+            pipenv run python manage.py test
       - store_test_results:
           path: test-results
       - store_artifacts:
